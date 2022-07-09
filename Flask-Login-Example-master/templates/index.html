@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+
+{% if id %}
+
+
+<div class="w3-content w3-padding" style="max-width:1564px">
+	<!-- Project Section -->
+	<div class="w3-container w3-padding-32" id="projects">
+		<header class="w3-container w3-center w3-padding-32">
+			<h1><b>CARTE MEMBRE</b></h1>
+		</header>
+		<div class="w3-wide w3-center">
+			<div class="w3-row-padding w3-center w3-section">
+				<p> Salam <span class="w3-tag">{{prenom}} {{nom}} </span></p>
+				<p> Cotisation: <span class="w3-tag">{{cot}} 円</span></p>
+				<div class="w3-col m6">
+					<span class="w3-tag">Recto</span>
+					<img src="/static/asene_cartes/1.PNG" style="width:100%"
+						onclick="document.getElementById('modal01').style.display='block'" class="w3-hover-opacity"
+						alt="recto">
+				</div>
+
+				<div class="w3-col m6">
+					<span class="w3-tag">Verso</span>
+					<img src="/static/asene_cartes/{{id}}.PNG" style="width:100%"
+						onclick="document.getElementById('modal02').style.display='block'" class="w3-hover-opacity"
+						alt="verso_{{id}}">
+				</div>
+			</div>
+			<a class="w3-btn w3-round-xxlarge w3-border-red" href="/logout">Logout</a> <br> <br>
+		</div>
+	</div>
+</div>
+<div class="w3-container">
+	<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+		<span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+		<div class="w3-modal-content w3-animate-zoom">
+			<img src="/static/asene_cartes/1.PNG" style="width:100%">
+		</div>
+	</div>
+</div>
+<div class="w3-container">
+	<div id="modal02" class="w3-modal" onclick="this.style.display='none'">
+		<span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+		<div class="w3-modal-content w3-animate-zoom">
+			<img src="/static/asene_cartes/{{id}}.PNG" style="width:100%">
+		</div>
+	</div>
+</div>
+{% else %}
+
+<div class="w3-content w3-padding" style="max-width:1564px">
+	<!-- Project Section -->
+	<div class="w3-container w3-padding-32" id="projects">
+		<div class="w3-wide w3-center">
+			<div class="w3-row-padding w3-center w3-section">
+				<div class="w3-col m3">
+					<h3>{{id}}</h3>
+					<img src="/static/asene_cartes/1.PNG" style="width:100%" onclick="onClick(this)"
+						class="w3-hover-opacity" alt="recto">
+				</div>
+
+				<div class="w3-col m3">
+					<img src="/static/asene_cartes/{{id}}.PNG" style="width:100%" onclick="onClick(this)"
+						class="w3-hover-opacity" alt="verso_{{id}}">
+				</div>
+			</div>
+
+			<form action="" method="POST">
+				<input type="username" name="username" placeholder="Instagram Username">
+				<input type="submit" value="Finds">
+			</form>
+			<a class="w3-btn w3-round-xxlarge w3-border-red" href="/logout">Logout</a> <br> <br>
+		</div>
+	</div>
+</div>
+{% endif %}
+
+{% else %}
+
+<div class="w3-content w3-padding" style="max-width:1564px">
+	<!-- Project Section -->
+	<div class="w3-container w3-padding-32" id="projects">
+		<header class="w3-container w3-center w3-padding-32">
+			<h1><b>LOGIN or REGISTER</b></h1>
+			<p>login with your <span class="w3-tag">ID</span></p>
+			<p>or set a password for your <span class="w3-tag">ID</span></p>
+		</header>
+		<div class="w3-wide w3-center">
+			<img src="/static/asene_cartes/simb.jpg" alt="Lights" class="w3-image" width="300" height="200">
+			<header class="w3-container w3-center w3-padding-32">
+				<p><span class="w3-tag">not logged in </span></p>
+			</header>
+			<a class="w3-btn w3-round-xxlarge w3-border-red" href="/login">Login</a>
+			<a class="w3-btn w3-round-xxlarge w3-border-red" href="/register">Register</a>
+		</div>
+	</div>
+</div>
+
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+
+<p>You're logged in already!</p>
+<div class="w3-content w3-padding" style="max-width:1564px">
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <div class="w3-wide w3-center">
+      <img src="/static/asene_cartes/conn.jpg" alt="Lights" class="w3-image" width="300" height="200">
+      <header class="w3-container w3-center w3-padding-32">
+        <p><span class="w3-tag">already logged in </span></p>
+      </header>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="w3-content w3-padding" style="max-width:1564px">
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <header class="w3-container w3-center w3-padding-32">
+      <h1><b>LOGIN</b></h1>
+      <p>login with your <span class="w3-tag">ID</span></p>
+    </header>
+    <div class="w3-wide w3-center">
+      <p><span class="w3-tag">log in from here</span></p>
+      <form action="/login" method="POST">
+        <input class="w3-input w3-border" type="username" name="username" placeholder="ID on the card">
+        <input class="w3-input w3-border" type="password" name="password" placeholder="Password">
+        <input class="w3-button w3-black w3-center w3-section" type="submit" value="Log in">
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}
